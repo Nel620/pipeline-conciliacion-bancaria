@@ -304,6 +304,7 @@ Las siguientes imágenes están referenciadas en este documento y deben ubicarse
 - **Manejo más robusto de cuotas de IA**: detección proactiva del estado de la cuota de Gemini antes de iniciar la fase de IA, en lugar de descubrirlo mediante el fallo de la llamada.
 - **Pruebas automatizadas** para los módulos del pipeline (`paso1` a `paso5`) y para el contrato de la API del Python Worker.
 - **Separación explícita** de los archivos de referencia (`api.py`, `apianterior.py`) que actualmente conviven junto al pipeline sin formar parte de la imagen de producción, para mantener el repositorio del pipeline libre de artefactos no utilizados.
+- **Reemplazar sys.exit()** por respuestas HTTP estructuradas para que n8n pueda diferenciar errores técnicos de errores de validación de negocio.
 
 ---
 
