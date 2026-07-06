@@ -286,7 +286,7 @@ Las siguientes imágenes están referenciadas en este documento y deben ubicarse
 
 | Archivo | Contenido recomendado |
 |---|---|
-| `docs/images/arquitectura_general.png` | Diagrama de alto nivel: Google Drive → n8n → Python Worker → Pipeline, con las flechas de respaldo hacia Drive. |
+| ![Arquitectura general](docs/images/arquitectura_general.png)| Diagrama de alto nivel: Google Drive → n8n → Python Worker → Pipeline, con las flechas de respaldo hacia Drive. |
 | `docs/images/estructura_repositorio.png` | Árbol de carpetas del repositorio o captura del explorador de archivos del proyecto. |
 | `docs/images/flujo_sistema.png` | Diagrama de secuencia end-to-end, desde la llegada del archivo hasta la distribución de correos y el respaldo en Drive. |
 | `docs/images/arquitectura_docker.png` | Diagrama de contenedores (jupyterlab, n8n, python-worker) y volúmenes compartidos (`shared_data`, `jupyter_data`, `n8n_data`). |
