@@ -18,7 +18,7 @@ El sistema detecta automáticamente la llegada de un archivo Excel a una carpeta
 - [Instalación y despliegue](#instalación-y-despliegue)
 - [Variables de entorno](#variables-de-entorno)
 - [Ejecución local y en producción](#ejecución-local-y-en-producción)
-- [Diagramas e imágenes recomendadas](#diagramas-e-imágenes-recomendadas)
+- [Diagramas e imágenes](#diagramas-e-imágenes)
 - [Posibles mejoras futuras](#posibles-mejoras-futuras)
 - [Documentación adicional](#documentación-adicional)
 - [Créditos y licencia](#créditos-y-licencia)
@@ -280,19 +280,17 @@ En producción, el flujo se dispara automáticamente al subir un archivo a la ca
 
 ---
 
-## Diagramas e imágenes recomendadas
-
-Las siguientes imágenes están referenciadas en este documento y deben ubicarse en `docs/images/` con estos nombres exactos para que se muestren correctamente sin necesidad de modificar el README:
+## Diagramas e imágenes
 
 | Archivo | Contenido recomendado |
 |---|---|
 | ![Arquitectura general](docs/images/arquitectura_general.png)| Diagrama de alto nivel: Google Drive → n8n → Python Worker → Pipeline, con las flechas de respaldo hacia Drive. |
 | `docs/images/estructura_repositorio.png` | Árbol de carpetas del repositorio o captura del explorador de archivos del proyecto. |
 | `docs/images/flujo_sistema.png` | Diagrama de secuencia end-to-end, desde la llegada del archivo hasta la distribución de correos y el respaldo en Drive. |
-| `docs/images/arquitectura_docker.png` | Diagrama de contenedores (jupyterlab, n8n, python-worker) y volúmenes compartidos (`shared_data`, `jupyter_data`, `n8n_data`). |
-| `docs/images/flujo_pipeline.png` *(opcional)* | Diagrama de las fases internas del pipeline (lectura → validación → limpieza → validación → análisis → visualización → IA). |
-| `docs/images/flujo_n8n.png` *(opcional)* | Captura o diagrama del workflow de n8n: trigger, catálogo, distribuidor, envío de correos, respaldo en Drive. |
-| `docs/images/ejemplo_graficas.png` *(opcional)* | Muestra de las gráficas generadas automáticamente por el pipeline (ingresos vs. egresos, mora por empresa, heatmap). |
+| ![Arquitectura docker](docs/images/arquitectura_docker.png) | Diagrama de contenedores (jupyterlab, n8n, python-worker) y volúmenes compartidos (`shared_data`, `jupyter_data`, `n8n_data`). |
+| ![Flujo pipeline](docs/images/flujo_pipeline.png) | Diagrama de las fases internas del pipeline (lectura → validación → limpieza → validación → análisis → visualización → IA). |
+| ![Ejemplo graficas](docs/images/flujo_n8n.png) | Captura o diagrama del workflow de n8n: trigger, catálogo, distribuidor, envío de correos, respaldo en Drive. |
+| ![Ejemplo graficas](docs/images/ejemplo_graficas.png) | Muestra de las gráficas generadas automáticamente por el pipeline (ingresos vs. egresos, mora por empresa, heatmap). |
 
 ---
 
