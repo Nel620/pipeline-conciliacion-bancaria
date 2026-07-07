@@ -1,6 +1,6 @@
 # Guía de archivos generados por esta corrida
 
-Esta carpeta contiene los resultados de una ejecución del pipeline de conciliación bancaria. El nombre de la carpeta (`AAAAMMDD_HHMMSS`) indica cuándo se generó.
+Esta carpeta contiene los resultados de una ejecución del pipeline de conciliación bancaria. 
 
 | Archivo                          | Contenido                                                                 | Generado por |
 |-----------------------------------|----------------------------------------------------------------------------|--------------|
