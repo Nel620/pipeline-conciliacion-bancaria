@@ -55,10 +55,6 @@ Google Drive  ──►  n8n (orquestación)  ──►  Python Worker (FastAPI)
 - **El pipeline** no conoce n8n.
 - Toda la comunicación ocurre a través de una API HTTP y de un volumen de archivos compartido (`/shared`).
 
-> **Figura 1. Arquitectura general del sistema**
->
-> ![Arquitectura general](docs/images/arquitectura_general.png)
-
 ---
 
 ## Tecnologías utilizadas
@@ -161,7 +157,7 @@ Google Drive  ──►  n8n (orquestación)  ──►  Python Worker (FastAPI)
 7. n8n lee los archivos necesarios desde disco (un único nodo de lectura, reutilizado para todos los artefactos) y envía un correo por destinatario con sus adjuntos correspondientes.
 8. En paralelo, se crea una carpeta con nombre basado en fecha y hora en Google Drive, y se sube ahí una copia de respaldo de los resultados.
 
-> **Figura 3. Flujo completo del sistema, de Google Drive a la distribución final**
+> **Figura 1. Flujo completo del sistema, de Google Drive a la distribución final**
 >
 > ![Flujo completo del sistema](docs/images/flujo_sistema.png)
 
@@ -204,7 +200,7 @@ Entorno de desarrollo donde se edita el código del pipeline. El mismo volumen d
 ### Almacenamiento compartido
 Un volumen Docker (`shared_data`), montado en los tres servicios bajo `/shared`, es el único mecanismo de intercambio de archivos entre ellos. Cada ejecución del pipeline genera una carpeta propia dentro de `/shared/processed/`, nombrada con la fecha y hora de la ejecución, lo que permite conservar un historial completo de resultados. Actualmente los resultados se conservan de forma indefinida hasta que se eliminan manualmente; no existe un proceso automático de limpieza o expiración.
 
-> **Figura 4. Contenedores, volúmenes y comunicación entre servicios**
+> **Figura 2. Contenedores, volúmenes y comunicación entre servicios**
 >
 > ![Arquitectura de contenedores](docs/images/arquitectura_docker.png)
 
@@ -273,7 +269,7 @@ Un archivo `.env.example` debe incluirse en el repositorio con estas claves sin 
 ### Ejecución local del pipeline (sin n8n ni Docker)
 
 ```bash
-cd pipeline_banco
+cd data/src
 python main.py archivo.xlsx
 ```
 
