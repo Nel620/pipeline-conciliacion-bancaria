@@ -1,0 +1,27 @@
+# requirements.txt
+# ----------------------------------------------------------------------
+# Generado a partir de los imports REALES de main.py, paso1..paso5.
+# A diferencia de `pip freeze`, esto NO arrastra paquetes de tu entorno
+# de Jupyter que no tienen nada que ver con el pipeline (eso es lo que
+# suele romper la instalación cuando lo llevas a otro equipo).
+#
+# Instalación en el otro equipo:
+#   pip install -r requirements.txt
+#
+# Si en algún momento quieres regenerar esto de forma automática y
+# precisa (en vez de a mano), usa "pipreqs" en la carpeta del proyecto:
+#   pip install pipreqs
+#   pipreqs . --force
+# pipreqs sí escanea el código (como pip freeze), pero solo incluye lo
+# que tus scripts importan, no todo lo instalado en el entorno.
+# ----------------------------------------------------------------------
+
+pandas>=2.0
+openpyxl>=3.1          # motor para leer/escribir .xlsx (usado por pandas)
+python-dotenv>=1.0     # carga GEMINI_API_KEY desde .env
+matplotlib>=3.7
+seaborn>=0.12
+google-genai>=0.3      # cliente de Gemini (Paso 5 - IA)
+pandera>=0.19          # validación estricta de datos (nuevo, Punto 2)
+fastapi>=0.110
+uvicorn[standard]>=0.29

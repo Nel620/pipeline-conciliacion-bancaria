@@ -1,0 +1,456 @@
+{
+  "name": "My workflow copy",
+  "nodes": [
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "triggerOn": "specificFolder",
+        "folderToWatch": {
+          "__rl": true,
+          "value": "1l0290aiyMkbRs4q8j5VC06ftYX2T_MdU",
+          "mode": "id"
+        },
+        "event": "fileCreated",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDriveTrigger",
+      "typeVersion": 1,
+      "position": [
+        -432,
+        -64
+      ],
+      "id": "b07911a6-0721-4d40-a7af-82859e19e70e",
+      "name": "Google Drive Trigger",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "YOUR_GOOGLE_DRIVE_CREDENTIAL_ID",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "download",
+        "fileId": {
+          "__rl": true,
+          "value": "={{ $json.id }}",
+          "mode": "id"
+        },
+        "options": {
+          "fileName": ""
+        }
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        -208,
+        -64
+      ],
+      "id": "70dec0ed-4809-4215-9692-4fe8d110f423",
+      "name": "Download file",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "YOUR_GOOGLE_DRIVE_CREDENTIAL_ID",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://python_worker:8000/procesar",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"file_path\": \"/shared/{{ $json.name }}\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        240,
+        -64
+      ],
+      "id": "f2ae0ae3-05bf-4a9a-b672-c5968a2a4067",
+      "name": "HTTP Request (FastAPI)"
+    },
+    {
+      "parameters": {
+        "operation": "write",
+        "fileName": "=/shared/{{ $json.name }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1.1,
+      "position": [
+        16,
+        -64
+      ],
+      "id": "217c6b40-2bb7-47ed-9273-50d535567493",
+      "name": "Guardar archivo"
+    },
+    {
+      "parameters": {
+        "jsCode": "const paquetes = $input.all();\n\nreturn paquetes.map(item => {\n\n    let correo = \"\";\n    let asunto = \"\";\n    let mensajeHTML = \"\";\n\n    switch (item.json.destinatario) {\n\n        case \"Analista\":\n\n            correo = \"analista@ejemplo.com\";\n\n            asunto = \"Resultado de Ejecución | Pipeline de Conciliación Bancaria\";\n\n            mensajeHTML = `\n<p>Buen día.</p>\n\n<p>La ejecución automática del <strong>Pipeline de Conciliación Bancaria</strong> ha finalizado correctamente.</p>\n\n<p>Se adjuntan todos los artefactos generados para validar la ejecución del proceso.</p>\n\n<p>Cordialmente,<br><strong>Automatización de Conciliación Bancaria</strong></p>\n`;\n\n            break;\n\n        case \"Gerencia de Riesgo\":\n\n            correo = \"riesgo@ejemplo.com\";\n\n            asunto = \"Reporte Ejecutivo | Conciliación Bancaria\";\n\n            mensajeHTML = `\n<p>Buen día.</p>\n\n<p>Se comparte el paquete ejecutivo generado por el proceso automatizado de conciliación bancaria.</p>\n\n<p>Los archivos adjuntos apoyan el análisis de riesgos y la toma de decisiones.</p>\n\n<p>Cordialmente,<br><strong>Automatización de Conciliación Bancaria</strong></p>\n`;\n\n            break;\n\n        case \"Equipo Operativo de Cartera\":\n\n            correo = \"cartera@ejemplo.com\";\n\n            asunto = \"Alertas Operativas | Conciliación Bancaria\";\n\n            mensajeHTML = `\n<p>Buen día.</p>\n\n<p>Se adjuntan el dataset limpio y la clasificación de alertas para apoyar la gestión operativa de cartera.</p>\n\n<p>Cordialmente,<br><strong>Automatización de Conciliación Bancaria</strong></p>\n`;\n\n            break;\n\n    }\n\n    return {\n        json: {\n            ...item.json,\n            correo,\n            asunto,\n            mensaje_html: mensajeHTML\n        }\n    };\n\n});"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        912,
+        -160
+      ],
+      "id": "327a2a8b-f3be-41bb-88bb-b2e50dd4fcf5",
+      "name": "Configuración de Destinatarios"
+    },
+    {
+      "parameters": {
+        "jsCode": "const outputDir = $input.first().json.output_dir;\n\nreturn [\n  {\n    json: {\n      output_dir: outputDir,\n      artefactos: [\n        {\n          nombre: \"reporte_ejecutivo\",\n          archivo: \"reporte_ejecutivo.md\",\n          ruta: `${outputDir}/reporte_ejecutivo.md`,\n          tipo: \"markdown\"\n        },\n        {\n          nombre: \"reporte_estructurado\",\n          archivo: \"reporte_estructurado.xlsx\",\n          ruta: `${outputDir}/reporte_estructurado.xlsx`,\n          tipo: \"excel\"\n        },\n        {\n          nombre: \"datos_limpios\",\n          archivo: \"datos_limpios.xlsx\",\n          ruta: `${outputDir}/datos_limpios.xlsx`,\n          tipo: \"excel\"\n        },\n        {\n          nombre: \"clasificacion_alertas\",\n          archivo: \"clasificacion_alertas.json\",\n          ruta: `${outputDir}/clasificacion_alertas.json`,\n          tipo: \"json\"\n        },\n        {\n          nombre: \"grafico_ingresos_egresos\",\n          archivo: \"1_ingresos_egresos.png\",\n          ruta: `${outputDir}/graficas_output/1_ingresos_egresos.png`,\n          tipo: \"imagen\"\n        },\n        {\n          nombre: \"grafico_problemas_banco\",\n          archivo: \"2_problemas_banco.png\",\n          ruta: `${outputDir}/graficas_output/2_problemas_banco.png`,\n          tipo: \"imagen\"\n        },\n        {\n          nombre: \"grafico_mora_empresa\",\n          archivo: \"3_mora_empresa.png\",\n          ruta: `${outputDir}/graficas_output/3_mora_empresa.png`,\n          tipo: \"imagen\"\n        },\n        {\n          nombre: \"grafico_heatmap_bancos\",\n          archivo: \"4_heatmap_bancos.png\",\n          ruta: `${outputDir}/graficas_output/4_heatmap_bancos.png`,\n          tipo: \"imagen\"\n        }\n      ]\n    }\n  }\n];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        464,
+        -64
+      ],
+      "id": "2829af1b-3cec-4500-80e5-dd6dca097fdc",
+      "name": "Catálogo de Artefactos"
+    },
+    {
+      "parameters": {
+        "jsCode": "const catalogo = $input.first().json.artefactos;\n\nreturn [\n  {\n    json: {\n      destinatario: \"Analista\",\n      artefactos: catalogo\n    }\n  },\n  {\n    json: {\n      destinatario: \"Gerencia de Riesgo\",\n      artefactos: catalogo.filter(a =>\n        [\n          \"reporte_ejecutivo\",\n          \"datos_limpios\",\n          \"grafico_ingresos_egresos\",\n          \"grafico_problemas_banco\",\n          \"grafico_mora_empresa\",\n          \"grafico_heatmap_bancos\"\n        ].includes(a.nombre)\n      )\n    }\n  },\n  {\n    json: {\n      destinatario: \"Equipo Operativo de Cartera\",\n      artefactos: catalogo.filter(a =>\n        [\n          \"datos_limpios\",\n          \"clasificacion_alertas\"\n        ].includes(a.nombre)\n      )\n    }\n  }\n];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        688,
+        -160
+      ],
+      "id": "bd1671f5-fb66-4674-9979-7b26014f806d",
+      "name": "Distribuidor"
+    },
+    {
+      "parameters": {
+        "jsCode": "const salida = [];\n\nfor (const item of $input.all()) {\n\n  const {\n    artefactos,\n    ...datosCorreo\n  } = item.json;\n\n  for (const artefacto of artefactos) {\n\n    salida.push({\n      json: {\n        ...datosCorreo,\n        artefacto\n      }\n    });\n\n  }\n\n}\n\nreturn salida;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1136,
+        -160
+      ],
+      "id": "78912c7e-2aa0-4953-87c8-e14ac37bb103",
+      "name": "Expandir Artefactos"
+    },
+    {
+      "parameters": {
+        "fileSelector": "={{$json.artefacto.ruta}}",
+        "options": {
+          "dataPropertyName": "file"
+        }
+      },
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1.1,
+      "position": [
+        1360,
+        -160
+      ],
+      "id": "34589f96-9936-45ae-8a96-793c46a8adfd",
+      "name": "Read/Write Files from Disk"
+    },
+    {
+      "parameters": {
+        "jsCode": "const previos = $(\"Expandir Artefactos\").all(); // items originales (correo, asunto, artefacto...)\nconst actuales = $input.all();                  // items con el binario del archivo leído\n\nconst grupos = {};\n\nfor (let i = 0; i < actuales.length; i++) {\n  const orig = previos[i].json;\n  const bin = actuales[i].binary;\n\n  const key = orig.destinatario;\n  if (!grupos[key]) {\n    grupos[key] = {\n      json: {\n        destinatario: orig.destinatario,\n        correo: orig.correo,\n        asunto: orig.asunto,\n        mensaje_html: orig.mensaje_html,\n        adjuntos: []\n      },\n      binary: {}\n    };\n  }\n\n  // nombre único de propiedad binaria por artefacto\n  const propName = orig.artefacto.nombre;\n  const binKey = Object.keys(bin)[0]; // normalmente \"data\"\n  grupos[key].binary[propName] = bin[binKey];\n  grupos[key].json.adjuntos.push(propName);\n}\n\nreturn Object.values(grupos).map(item => ({\n  json: {\n    ...item.json,\n    // string listo para el campo \"Attachments\" del nodo Gmail\n    attachmentPropertyNames: item.json.adjuntos.join(\",\")\n  },\n  binary: item.binary\n}));"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1584,
+        -208
+      ],
+      "id": "0326e91e-34bb-4078-aec3-8c9a7549e48e",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "sendTo": "={{$json.correo}}",
+        "subject": "={{$json.asunto}}",
+        "message": "={{$json.mensaje_html}}",
+        "options": {
+          "attachmentsUi": {
+            "attachmentsBinary": [
+              {
+                "property": "={{$json.attachmentPropertyNames}}"
+              }
+            ]
+          }
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        1808,
+        -208
+      ],
+      "id": "92edd0bf-85d5-4bbc-a63c-b01c247bf74a",
+      "name": "Send a message",
+      "webhookId": "00000000-0000-0000-0000-000000000000",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "YOUR_GMAIL_CREDENTIAL_ID",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "folder",
+        "name": "={{$now.format('yyyy-MM-dd_HH-mm')}}",
+        "driveId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "My Drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "YOUR_DRIVE_FOLDER_ID",
+          "mode": "id"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        1360,
+        80
+      ],
+      "id": "1fec8509-12b1-41ce-b42e-4a3ec657efca",
+      "name": "Create folder",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "YOUR_GOOGLE_DRIVE_CREDENTIAL_ID",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "inputDataFieldName": "file",
+        "name": "={{$json.fileName}}",
+        "driveId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "My Drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "={{$(\"Create folder\").first().json.id}}",
+          "mode": "id"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        1808,
+        32
+      ],
+      "id": "8dea3964-41a6-4aab-ac11-1130e5a3e79b",
+      "name": "Upload file",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "YOUR_GOOGLE_DRIVE_CREDENTIAL_ID",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineAll",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        1584,
+        32
+      ],
+      "id": "f9f951e6-4794-4e5f-b145-9d8767a036d6",
+      "name": "Merge1"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Google Drive Trigger": {
+      "main": [
+        [
+          {
+            "node": "Download file",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Download file": {
+      "main": [
+        [
+          {
+            "node": "Guardar archivo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request (FastAPI)": {
+      "main": [
+        [
+          {
+            "node": "Catálogo de Artefactos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Guardar archivo": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request (FastAPI)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Catálogo de Artefactos": {
+      "main": [
+        [
+          {
+            "node": "Distribuidor",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Create folder",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Distribuidor": {
+      "main": [
+        [
+          {
+            "node": "Configuración de Destinatarios",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Configuración de Destinatarios": {
+      "main": [
+        [
+          {
+            "node": "Expandir Artefactos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Expandir Artefactos": {
+      "main": [
+        [
+          {
+            "node": "Read/Write Files from Disk",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read/Write Files from Disk": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send a message": {
+      "main": [
+        []
+      ]
+    },
+    "Create folder": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Upload file": {
+      "main": [
+        []
+      ]
+    },
+    "Merge1": {
+      "main": [
+        [
+          {
+            "node": "Upload file",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "6d3d7143-6625-47e2-83db-c541b13d1c92",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "cd2405282b666e6b2367f65ffd5a3f9fe96232e38feeac8be665c0550c230899"
+  },
+  "nodeGroups": [],
+  "id": "rF3bGnlPTcXBphq2",
+  "tags": []
+}

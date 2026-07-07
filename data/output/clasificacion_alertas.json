@@ -1,0 +1,185 @@
+{
+  "panorama_general": "El lote revela alta concentración de riesgo en Andes Tecnología y Cafe Sierra Export, con múltiples casos de mora alta y valores significativos. Destacan transacciones 'Pendiente' y 'Rechazado', incluyendo varios valores negativos considerables que representan pasivos o errores.",
+  "casos": [
+    {
+      "transaccion_id": "MIXENE-TRX-0100",
+      "prioridad": "Alta",
+      "insight": "Transacción de Andes Tecnología con 46 días de mora por $6.255.176 pendiente, requiere atención inmediata.",
+      "accion_recomendada": "Escalar a Gerencia de Riesgo y contactar a Andes Tecnología para resolución urgente en 24h."
+    },
+    {
+      "transaccion_id": "MIXENE-TRX-0020",
+      "prioridad": "Media",
+      "insight": "Cafe Sierra Export tiene una transacción pendiente de $1.331.849 con 46 días de mora, necesita seguimiento.",
+      "accion_recomendada": "Contactar al cliente y departamento de conciliación para entender el retraso y buscar solución en 48h."
+    },
+    {
+      "transaccion_id": "MIXENE-TRX-0091",
+      "prioridad": "Alta",
+      "insight": "Transacción de Clinica Norte con diferencia de $5.701.515 y 42 días de mora presenta alto riesgo.",
+      "accion_recomendada": "Iniciar investigación de la diferencia y contactar a Clinica Norte para aclarar situación en 24h."
+    },
+    {
+      "transaccion_id": "MIXENE-TRX-0072",
+      "prioridad": "Alta",
+      "insight": "Transacción negativa de Horizonte Insumos por $5.392.912 con 42 días de mora genera un pasivo.",
+      "accion_recomendada": "Revisar origen del valor negativo y escalar a Contabilidad/Finanzas para procesar o resolver en 24h."
+    },
+    {
+      "transaccion_id": "MIXENE-TRX-0040",
+      "prioridad": "Media",
+      "insight": "Horizonte Insumos tiene una transacción pendiente de $2.562.483 con 39 días de mora.",
+      "accion_recomendada": "Contactar al cliente y al área de Tesorería para gestionar el pago o aclarar el estado en 48h."
+    },
+    {
+      "transaccion_id": "MIXENE-TRX-0063",
+      "prioridad": "Alta",
+      "insight": "Transacción rechazada de Cafe Sierra Export por $4.734.055 con 38 días de mora, causa de riesgo.",
+      "accion_recomendada": "Identificar motivo del rechazo, contactar al cliente y re-procesar/corregir transacción en 24h."
+    },
+    {
+      "transaccion_id": "MIXENE-TRX-0021",
+      "prioridad": "Media",
+      "insight": "Transacción de Clinica Norte por $1.658.270 rechazada y con 38 días de mora, requiere solución.",
+      "accion_recomendada": "Contactar a Clinica Norte para entender el rechazo y gestionar el reproceso en 48h."
+    },
+    {
+      "transaccion_id": "MIXENE-TRX-0092",
+      "prioridad": "Alta",
+      "insight": "Nova Retail tiene una transacción pendiente negativa de $6.857.366 con 35 días de mora, riesgo elevado.",
+      "accion_recomendada": "Investigar inmediatamente la causa del valor negativo y coordinar su resolución con Contabilidad/Finanzas en 24h."
+    },
+    {
+      "transaccion_id": "MIXENE-TRX-0012",
+      "prioridad": "Media",
+      "insight": "Transacción pendiente de Prisma Logística por -$998.607 con 35 días de mora.",
+      "accion_recomendada": "Revisar el detalle de esta transacción negativa y contactar a Prisma Logística en 48h."
+    },
+    {
+      "transaccion_id": "MIXENE-TRX-0060",
+      "prioridad": "Media",
+      "insight": "Nova Retail tiene una transacción pendiente de $4.513.809 con 32 días de mora, requiere seguimiento.",
+      "accion_recomendada": "Contactar al cliente para obtener estado de pago y escalar a departamento de cobros en 48h."
+    },
+    {
+      "transaccion_id": "MIXENE-TRX-0064",
+      "prioridad": "Alta",
+      "insight": "Clínica Norte registra un valor pendiente negativo de $4.807.426 con 31 días de mora.",
+      "accion_recomendada": "Investigar la causa de este pasivo y coordinar con el área contable/tesorería su resolución urgente en 24h."
+    },
+    {
+      "transaccion_id": "MIXENE-TRX-0032",
+      "prioridad": "Media",
+      "insight": "Clínica Norte tiene una transacción pendiente negativa de $2.463.868 con 28 días de mora.",
+      "accion_recomendada": "Revisar y confirmar el origen de este pasivo y contactar a la clínica para coordinar su gestión en 48h."
+    },
+    {
+      "transaccion_id": "MIXENE-TRX-0013",
+      "prioridad": "Media",
+      "insight": "Transacción de Horizonte Insumos con diferencia negativa de $900.822 y 28 días de mora.",
+      "accion_recomendada": "Analizar la diferencia y contactar a Horizonte Insumos para aclaración en 48h."
+    },
+    {
+      "transaccion_id": "MIXENE-TRX-0036",
+      "prioridad": "Media",
+      "insight": "Cafe Sierra Export tiene una transacción pendiente negativa de $2.756.679 con 27 días de mora.",
+      "accion_recomendada": "Investigar el origen de este valor negativo y coordinar con el cliente para su resolución en 72h."
+    },
+    {
+      "transaccion_id": "MIXENE-TRX-0080",
+      "prioridad": "Media",
+      "insight": "Cafe Sierra Export tiene una transacción pendiente de $5.024.429 con 25 días de mora.",
+      "accion_recomendada": "Contactar a Cafe Sierra Export para solicitar el pago y hacer seguimiento con el departamento de cobros en 48h."
+    },
+    {
+      "transaccion_id": "MIXENE-TRX-0084",
+      "prioridad": "Alta",
+      "insight": "Andes Tecnología tiene una transacción rechazada de $6.271.880 con 24 días de mora, riesgo significativo.",
+      "accion_recomendada": "Investigar urgentemente el motivo del rechazo, contactar a Andes Tecnología y coordinar re-proceso en 24h."
+    },
+    {
+      "transaccion_id": "MIXENE-TRX-0065",
+      "prioridad": "Media",
+      "insight": "Nova Retail presenta una transacción con diferencia de $4.100.832 y 24 días de mora.",
+      "accion_recomendada": "Revisar la discrepancia con Nova Retail y el equipo de conciliación para resolver en 72h."
+    },
+    {
+      "transaccion_id": "MIXENE-TRX-0042",
+      "prioridad": "Media",
+      "insight": "Cafe Sierra Export tiene una transacción rechazada de $3.196.096 con 24 días de mora.",
+      "accion_recomendada": "Determinar la razón del rechazo y contactar a Cafe Sierra Export para su gestión en 48h."
+    },
+    {
+      "transaccion_id": "MIXENE-TRX-0004",
+      "prioridad": "Baja",
+      "insight": "Transacción pendiente de Cafe Sierra Export por -$413.121 con 24 días de mora.",
+      "accion_recomendada": "Realizar seguimiento interno para identificar el origen y coordinar la resolución en 5 días."
+    },
+    {
+      "transaccion_id": "MIXENE-TRX-0052",
+      "prioridad": "Media",
+      "insight": "Andes Tecnología tiene una diferencia negativa de $3.928.323 con 21 días de mora.",
+      "accion_recomendada": "Analizar la naturaleza de la diferencia y contactar a Andes Tecnología para su pronta aclaración en 48h."
+    },
+    {
+      "transaccion_id": "MIXENE-TRX-0056",
+      "prioridad": "Media",
+      "insight": "Horizonte Insumos tiene una transacción pendiente de $3.547.171 con 20 días de mora.",
+      "accion_recomendada": "Contactar a Horizonte Insumos para verificar el estado de la transacción y agilizar el pago en 72h."
+    },
+    {
+      "transaccion_id": "MIXENE-TRX-0024",
+      "prioridad": "Baja",
+      "insight": "Horizonte Insumos tiene una transacción pendiente negativa de $1.877.576 con 17 días de mora.",
+      "accion_recomendada": "Investigar la causa del valor negativo y realizar un seguimiento interno en los próximos 5 días."
+    },
+    {
+      "transaccion_id": "MIXENE-TRX-0028",
+      "prioridad": "Baja",
+      "insight": "Transacción pendiente de Prisma Logística por $1.823.854 con 16 días de mora.",
+      "accion_recomendada": "Realizar un recordatorio de pago a Prisma Logística y monitorear su estado en los próximos 3 días."
+    },
+    {
+      "transaccion_id": "MIXENE-TRX-0076",
+      "prioridad": "Media",
+      "insight": "Nova Retail presenta un valor pendiente negativo de $5.685.587 con 14 días de mora, riesgo potencial.",
+      "accion_recomendada": "Investigar la naturaleza del valor negativo y coordinar con el área contable/tesorería para solución en 48h."
+    },
+    {
+      "transaccion_id": "MIXENE-TRX-0048",
+      "prioridad": "Media",
+      "insight": "Clinica Norte tiene un valor pendiente negativo de $3.635.647 con 10 días de mora.",
+      "accion_recomendada": "Confirmar el origen de este pasivo y coordinar con el cliente para su gestión en 72h."
+    },
+    {
+      "transaccion_id": "MIXENE-TRX-0044",
+      "prioridad": "Baja",
+      "insight": "Transacción pendiente de Nova Retail por $2.808.429 con 10 días de mora.",
+      "accion_recomendada": "Enviar recordatorio de pago a Nova Retail y programar seguimiento rutinario en una semana."
+    },
+    {
+      "transaccion_id": "MIXENE-TRX-0096",
+      "prioridad": "Media",
+      "insight": "Cafe Sierra Export tiene un valor pendiente negativo de $7.150.849 con 7 días de mora.",
+      "accion_recomendada": "Investigar urgentemente la causa de este pasivo tan significativo y escalar a Contabilidad/Finanzas en 24h."
+    },
+    {
+      "transaccion_id": "MIXENE-TRX-0039",
+      "prioridad": "Baja",
+      "insight": "Prisma Logística presenta una diferencia negativa de $2.500.827 con 6 días de mora.",
+      "accion_recomendada": "Revisar la diferencia interna y contactar a Prisma Logística para aclaración en 5 días."
+    },
+    {
+      "transaccion_id": "MIXENE-TRX-0016",
+      "prioridad": "Baja",
+      "insight": "Clinica Norte tiene un valor pendiente negativo de $1.292.090 con 6 días de mora.",
+      "accion_recomendada": "Revisar el origen del valor negativo y programar un seguimiento interno en 5 días."
+    },
+    {
+      "transaccion_id": "MIXENE-TRX-0068",
+      "prioridad": "Media",
+      "insight": "Andes Tecnología registra un valor pendiente negativo de $5.100.102 con solo 3 días de mora.",
+      "accion_recomendada": "Investigar proactivamente la causa de este elevado pasivo potencial y coordinar con el cliente en 48h."
+    }
+  ]
+}
