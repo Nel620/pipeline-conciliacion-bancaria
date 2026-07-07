@@ -16,4 +16,3 @@ Esta carpeta contiene los resultados de una ejecución del pipeline de conciliac
 
 - `reporte_ejecutivo.md` incluye una validación automática: si la IA no repite la cifra exacta de alertas críticas calculada por el pipeline, el reporte no se genera (para evitar reportes con datos alucinados).
 - Si `clasificacion_alertas.json` tiene `"estado": "ERROR"`, significa que la clasificación con IA falló (ej. límite de solicitudes de la API) y se generó un archivo de respaldo. Los casos completos siguen disponibles en la pestaña `Detalle_Anomalias` de `reporte_estructurado.xlsx`.
-- Esta carpeta y su contenido **no se suben a Git** (ver `.gitignore` del repositorio).
