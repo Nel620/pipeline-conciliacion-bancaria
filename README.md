@@ -92,40 +92,55 @@ Google Drive  ──►  n8n (orquestación)  ──►  Python Worker (FastAPI)
 
 ```
 .
-├── pipeline_banco/
-│   ├── main.py                  # Orquestador del pipeline (CLI y programático)
-│   ├── config.py                # Rutas de salida y umbrales de negocio
-│   ├── paso1_lectura.py         # Lectura y auditoría inicial del Excel
-│   ├── paso2_limpieza.py        # Limpieza y reglas de negocio
-│   ├── paso3_analisis.py        # Reporte analítico en Excel
-│   ├── paso4_visualizacion.py   # Generación de gráficas
-│   ├── paso5_ia.py              # Reporte ejecutivo y clasificación con Gemini
-│   ├── paso_validacion.py       # Esquemas y validación con Pandera
-│   └── requirements.txt
-│
-├── python-worker/
-│   ├── app.py                   # API FastAPI que expone el pipeline como servicio
-│   ├── Dockerfile
-│   └── requirements.txt
-│
-├── n8n/
-│   └── workflow.json            # Workflow exportado de n8n
-│
-├── docker-compose.yml            # Stack: jupyterlab, n8n, python-worker
+├── data/
+│   ├── notebook/                  # Cuadernos originales de exploración (Jupyter).
+│   │                              # Aquí nació el proyecto; se conservan como
+│   │                              # referencia, no se ejecutan en producción.
+│   │
+│   ├── src/                       # Código productivo real del pipeline. Esto es
+│   │   │                          # lo que corre en el servidor (Docker), expuesto
+│   │   │                          # vía app.py y disparado por n8n.
+│   │   ├── main.py                # Orquestador del pipeline (CLI y programático)
+│   │   ├── config.py              # Rutas de salida y umbrales de negocio
+│   │   ├── paso1_lectura.py       # Lectura y auditoría inicial del Excel
+│   │   ├── paso2_limpieza.py      # Limpieza y reglas de negocio
+│   │   ├── paso3_analisis.py      # Reporte analítico en Excel
+│   │   ├── paso4_visualizacion.py # Generación de gráficas
+│   │   ├── paso5_ia.py            # Reporte ejecutivo y clasificación con Gemini
+│   │   ├── paso_validacion.py     # Esquemas y validación con Pandera
+│   │   └── requirements.txt
+│   │
+│   ├── app.py                     # API FastAPI que expone el pipeline como servicio
+│   │
+│   ├── workflow/
+│   │   └── workflow.json          # Workflow exportado de n8n
+│   │
+│   ├── raw/                       # Archivos de prueba para demostrar el
+│   │                              # funcionamiento del pipeline (nulos,
+│   │                              # duplicados, fechas mal formateadas, etc.)
+│   │
+│   ├── processed/                 # Archivo Excel ya limpio, generado por el
+│   │                              # pipeline tras limpieza/validación/transformación
+│   │
+│   └── output/                    # Resultado de UNA ejecución de ejemplo
+│                                  # (reportes, gráficas, clasificación IA).
+│                                  # NOTA: no necesariamente corresponde 1 a 1
+│                                  # con los archivos que hoy están en raw/;
+│                                  # es solo material de demostración del
+│                                  # formato de salida.
 │
 ├── docs/
-│   ├── images/                   # Diagramas y capturas referenciadas en la documentación
+│   ├── images/                    # Diagramas y capturas referenciadas en la documentación
 │   └── architecture/
 │       ├── overview.md                     # Arquitectura del sistema (estado actual)
 │       ├── evolution.md                    # Historia y evolución del proyecto
 │       └── architectural-decisions.md      # Decisiones de arquitectura documentadas
 │
-├── .env.example                  # Variables de entorno necesarias (sin secretos)
+├── docker-compose.yml             # Stack: jupyterlab, n8n, python-worker
+├── .env.example                   # Variables de entorno necesarias (sin secretos)
 └── README.md
+
 ```
-
-
-
 ---
 
 ## Flujo completo del sistema
