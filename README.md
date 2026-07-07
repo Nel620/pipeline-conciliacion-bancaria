@@ -259,8 +259,6 @@ Esto levanta tres servicios:
 | `N8N_RESTRICT_FILE_ACCESS_TO` | n8n | Restringe el acceso a archivos de n8n a la ruta indicada (`/shared`). |
 | `GEMINI_API_KEY` | python-worker | API Key utilizada por el pipeline para las llamadas a Gemini. |
 
-Un archivo `.env.example` debe incluirse en el repositorio con estas claves sin valores sensibles, como referencia para nuevas instalaciones.
-
 ---
 
 ## Ejecución local y en producción
