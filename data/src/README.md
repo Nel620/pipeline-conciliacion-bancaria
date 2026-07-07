@@ -129,7 +129,3 @@ Editables en `config.py` sin tocar la lógica del pipeline:
 
 - Las claves (`GEMINI_API_KEY`, `JUPYTER_TOKEN`) se cargan desde variables de entorno / `.env`, nunca desde el código.
 - El archivo `.env` está excluido del repositorio vía `.gitignore` — nunca lo subas con valores reales.
-
-## Licencia
-
-_Agrega aquí la licencia que corresponda (MIT, propietaria, etc.)._
