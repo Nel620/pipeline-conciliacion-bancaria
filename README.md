@@ -293,17 +293,17 @@ En producción, el flujo se dispara automáticamente al subir un archivo a la ca
 Diagrama de alto nivel: Google Drive → n8n → Python Worker → Pipeline, con las flechas de respaldo hacia Drive. 
 
 ### Flujo de fases del pipeline
-![Diagrama de fases del pipeline](docs/images/flujo_fases.png)|
+![Diagrama de fases del pipeline](docs/images/flujo_pipeline.png)|
 Diagrama de las fases internas del pipeline (lectura → validación → limpieza →
 validación → análisis → visualización → IA).
 
 ### Workflow de n8n
-![Workflow de n8n](docs/images/workflow_n8n.png)|
+![Workflow de n8n](docs/images/flujo_n8n.png)|
 Captura del workflow de n8n: trigger, catálogo, distribuidor, envío de correos,
 respaldo en Drive. Para el detalle completo del flujo, ver `n8n/workflow.json`.
 
 ### Gráficas generadas por el pipeline
-![Gráficas del pipeline](docs/images/graficas_ejemplo.png)|
+![Gráficas del pipeline](docs/images/ejemplo_graficas.png)|
 Muestra de las gráficas generadas automáticamente por el pipeline (ingresos vs.
 egresos, problemas por banco, mora por empresa, heatmap de conciliación).
 
