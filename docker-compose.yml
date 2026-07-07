@@ -1,0 +1,50 @@
+version: '3.8'
+services:
+  jupyterlab:
+    image: jupyter/datascience-notebook:latest
+    container_name: jupyterlab
+    restart: always
+    ports:
+      - "8888:8888"
+    environment:
+      - JUPYTER_TOKEN=${JUPYTER_TOKEN}
+    volumes:
+      - jupyter_data:/home/jovyan/work
+      - shared_data:/shared
+
+  n8n:
+    image: docker.n8n.io/n8nio/n8n:latest
+    container_name: n8n_app
+    restart: always
+    ports:
+      - "5678:5678"
+    environment:
+      - N8N_SECURE_COOKIE=true
+      - N8N_PROTOCOL=https
+      - N8N_HOST=${N8N_HOST}
+      - WEBHOOK_URL=${WEBHOOK_URL}
+      - N8N_PORT=5678
+      - NODES_EXCLUDE=[]
+      - N8N_RESTRICT_FILE_ACCESS_TO=/shared
+    volumes:
+      - n8n_data:/home/node/.n8n
+      - shared_data:/shared
+    depends_on:
+      - python-worker
+
+  python-worker:
+    image: mi_python_worker
+    container_name: python_worker
+    restart: always
+    expose:
+      - "8000"
+    environment:
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+    volumes:
+      - shared_data:/shared
+      - jupyter_data:/work:ro
+
+volumes:
+  jupyter_data:
+  n8n_data:
+  shared_data:
