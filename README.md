@@ -300,7 +300,7 @@ validación → análisis → visualización → IA).
 ### Workflow de n8n
 ![Workflow de n8n](docs/images/flujo_n8n.png)|
 Captura del workflow de n8n: trigger, catálogo, distribuidor, envío de correos,
-respaldo en Drive. Para el detalle completo del flujo, ver `n8n/workflow.json`.
+respaldo en Drive. Para el detalle completo del flujo, ver `workflow/workflow_n8n.json`.
 
 ### Gráficas generadas por el pipeline
 ![Gráficas del pipeline](docs/images/ejemplo_graficas.png)|
