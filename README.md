@@ -124,9 +124,7 @@ Google Drive  ──►  n8n (orquestación)  ──►  Python Worker (FastAPI)
 └── README.md
 ```
 
-> **Figura 2. Estructura de carpetas del repositorio**
->
-> ![Estructura del repositorio](docs/images/estructura_repositorio.png)
+
 
 ---
 
