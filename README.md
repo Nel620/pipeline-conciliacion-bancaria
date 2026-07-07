@@ -40,6 +40,19 @@ El sistema automatiza ese ciclo de punta a punta: desde la llegada del archivo h
 - Mantener trazabilidad de cada ejecución mediante un historial de resultados organizado por fecha.
 
 ---
+> [!NOTE]
+> **Sobre este proyecto**
+>
+> Este proyecto fue construido por mí, sin formación formal en ingeniería de software o arquitectura de sistemas. Mi formación es en Administración de Empresas.
+>
+> Lo desarrollé apoyándome en inteligencia artificial (Gemini, Claude y ChatGPT) como herramientas de trabajo y en algunos cursos que tomé durante el proceso. Sin embargo, cada decisión, cada paso de la construcción y cada ejecución en la terminal las realicé yo, entendiendo qué se estaba haciendo y por qué.
+>
+> La IA me ayudó a resolver dudas puntuales y a acelerar partes del desarrollo; no diseñó ni ejecutó el proyecto de forma autónoma en ningún momento.
+>
+> Como consecuencia de este proceso de aprendizaje, es posible que existan mejoras pendientes de seguridad, arquitectura o buenas prácticas que un ingeniero con más experiencia habría resuelto de otra forma. Aun así, intenté dejar el código y la infraestructura lo más limpios y coherentes posible, y continúo iterando sobre ellos.
+>
+> Los comentarios y sugerencias son bienvenidos.
+---
 
 ## Arquitectura general
 
