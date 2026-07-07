@@ -224,7 +224,6 @@ cd <nombre-del-repositorio>
 
 ### Configurar variables de entorno
 
-Copiar `.env.example` a `.env` y completar los valores correspondientes (ver sección [Variables de entorno](#variables-de-entorno)).
 
 ### Levantar el stack
 
