@@ -331,6 +331,12 @@ egresos, problemas por banco, mora por empresa, heatmap de conciliación).
 
 ## Créditos y licencia
 
-**Desarrollado por:** *(completar con el nombre o usuario del autor)*
+## Autor
 
-**Licencia:** este repositorio no cuenta actualmente con una licencia formal. Se recomienda incorporar una licencia (por ejemplo, MIT o Apache 2.0) antes de la publicación pública, según el uso que se le quiera dar al código.
+**Nelson Orozco** (@nel620) 
+
+Proyecto desarrollado como parte de un portafolio de ingeniería de datos y automatización, utilizando Python, JupyterLab, FastAPI, Docker, n8n, Google Drive e IA generativa.
+
+## Licencia
+
+Este proyecto se distribuye bajo la licencia MIT.
